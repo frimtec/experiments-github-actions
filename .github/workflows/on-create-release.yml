@@ -1,0 +1,16 @@
+on:
+  release:
+    types: [created]
+
+name: On Create Release
+
+jobs:
+  output:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Create release
+      run: |
+        sed -i 's/$version/${{ github.ref }}/g' file.txt
+        cat file.txt

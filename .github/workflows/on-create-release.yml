@@ -10,7 +10,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Get the version
+      id: get_version
+      run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+
     - name: Create release
       run: |
-        sed -i 's/$version/${{ github.ref }}/g' file.txt
+        sed -i 's/$version/${{ steps.get_version.outputs.VERSION }}/g' file.txt
         cat file.txt

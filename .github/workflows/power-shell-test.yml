@@ -25,5 +25,4 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Execute command
-      shell: pwsh
-      run: ${{ github.event.inputs.command }}
+      run: pwsh -Command ${{ github.event.inputs.command }}

@@ -1,0 +1,30 @@
+name: Deploy release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+
+      - name: Get release
+        id: get_release
+        uses: bruceadams/get-release@v1.2.2
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Choose Release track
+        id: get_track
+        run: echo ::set-output name=TRACK::$(if [[ "${{ steps.get_release.outputs.prerelease }}" == "false" ]] ; then echo production ; else echo beta ; fi)
+
+      - name: Show track
+        run: echo ${{ steps.get_track.outputs.TRACK }}

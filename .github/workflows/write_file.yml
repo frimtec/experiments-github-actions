@@ -13,5 +13,5 @@ jobs:
         run: echo "${{ secrets.file_content_b64 }}" | base64 --decode > file
           
       - name: Use file
-        run: echo :securesmsproxyapi:publish --stacktrace -Psignatory.keyId=ABCD -Psigning.password="xx;fd`zh^9" -Psigning.secretKeyRingFile=file -PossUsername=nexus_username -PossPassword="xx;fdzh"
+        run: echo :securesmsproxyapi:publish --stacktrace -Psignatory.keyId=ABCD -Psigning.password="xx;fd\`zh^9" -Psigning.secretKeyRingFile=file -PossUsername=nexus_username -PossPassword="xx;fdzh"
           

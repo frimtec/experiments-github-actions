@@ -9,8 +9,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Write file
-        run: |
-          echo "${{ secrets.file_content_b64 }}" | base64 --decode > file
-          cat file
+      - name: Prepare file
+        run: echo "${{ secrets.file_content_b64 }}" | base64 --decode > file
+          
+      - name: Use file
+        run: bash echo :securesmsproxyapi:publish --stacktrace -Psignatory.keyId=key_id -Psigning.password="passphrase" -Psigning.secretKeyRingFile=file -PossUsername=nexus_username -PossPassword="secrets.nexus_password"    
           

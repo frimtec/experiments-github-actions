@@ -1,6 +1,6 @@
 ## What's changed
 
-* No changes
+* No changes - fasel
 
 **Full Changelog**: https://github.com/frimtec/experiments-github-actions/compare/1.1.4...1.1.5
 

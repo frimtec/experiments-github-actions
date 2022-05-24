@@ -34,9 +34,9 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
 
-      - name: Checkout master
+      - name: Checkout main
         run: |
-          git checkout master
+          git checkout main
 
       - name: Get release
         id: get_release
@@ -60,4 +60,4 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: 'master'
+          branch: 'main'

@@ -1,0 +1,8 @@
+## What's changed
+
+## ✨ New features
+
+- #3 Test @frimtec
+
+**Full Changelog**: https://github.com/frimtec/experiments-github-actions/compare/1.1.5...1.2.0
+

@@ -2,7 +2,7 @@ name: Fastlane changelog
 
 on:
   release:
-    types: [created]
+    types: [prereleased, released]
 
 jobs:
   deploy-apk:
@@ -46,7 +46,7 @@ jobs:
 
       - name: Create fastlane changelog
         run: |
-          echo ${{ steps.get_release.outputs.body }} >> fastlane/metadata/android/en-US/changelogs/${{needs.deploy-apk.outputs.VCODE}}.txt
+          echo "${{ steps.get_release.outputs.body }}" >> fastlane/metadata/android/en-US/changelogs/${{needs.deploy-apk.outputs.VCODE}}.txt
 
       - name: Commit changes
         run: |

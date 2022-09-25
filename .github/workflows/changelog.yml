@@ -1,0 +1,22 @@
+name: Changelog
+
+on:
+  release:
+    types: [prereleased, released]
+
+jobs:
+  update-repo:
+
+    runs-on: ubuntu-latest
+    needs: deploy-apk
+
+    steps:
+      - name: Export Properties
+        id: properties
+        shell: bash
+        run: |
+          CHANGELOG="$(cat << 'EOM' | sed -e 's/^[[:space:]]*$//g' -e '/./,$!d'
+          ${{ github.event.release.body }}
+          EOM
+          )"
+          echo "$CHANGELOG"
